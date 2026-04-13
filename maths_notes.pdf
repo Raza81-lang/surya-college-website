@@ -1,0 +1,18 @@
+<section id="notes">
+  <div class="card">
+    <h2>Study Notes</h2>
+    
+    <ul>
+      <li>
+        Maths Notes 
+        <a href="notes/math_notes.pdf" target="_blank">📄 View</a>
+      </li>
+      
+      <li>
+        Physics Notes 
+        <a href="notes/physics_notes.pdf" target="_blank">📄 View</a>
+      </li>
+    </ul>
+
+  </div>
+</section>
