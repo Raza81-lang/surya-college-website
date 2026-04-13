@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surya Intermediate College</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f5f7fa; }
+    header { background: #1e3a8a; color: white; padding: 15px; text-align: center; }
+    nav { background: #2563eb; display: flex; justify-content: center; gap: 20px; padding: 10px; flex-wrap: wrap; }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { padding: 20px; }
+    .card { background: white; padding: 15px; margin: 10px 0; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    footer { background: #1e3a8a; color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; }
+    input, textarea { width: 100%; padding: 8px; margin: 5px 0; }
+    button { padding: 10px; background: #2563eb; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #1e40af; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Surya Intermediate College</h1>
+  <p>Student Portal</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#timetable">Timetable</a>
+  <a href="#notes">Notes</a>
+  <a href="#announcements">Announcements</a>
+  <a href="#admin">Admin</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+  <div class="card">
+    <h2>Welcome Students</h2>
+    <p>This portal helps you access timetable, notes, and important updates.</p>
+  </div>
+</section>
+
+<section id="timetable">
+  <div class="card">
+    <h2>Exam Timetable</h2>
+    <ul id="timetableList">
+      <li>Maths - 10 April</li>
+      <li>Physics - 12 April</li>
+      <li>Chemistry - 15 April</li>
+    </ul>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="card">
+    <h2>Study Notes</h2>
+    <p>Upload and share notes here.</p>
+  </div>
+</section>
+
+<section id="announcements">
+  <div class="card">
+    <h2>Announcements</h2>
+    <ul id="announcementList">
+      <li>No new announcements.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section id="admin">
+  <div class="card" id="loginCard">
+    <h2>Teacher Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div class="card hidden" id="adminPanel">
+    <h2>Admin Panel</h2>
+
+    <h3>Add Announcement</h3>
+    <textarea id="newAnnouncement" placeholder="Enter announcement"></textarea>
+    <button onclick="addAnnouncement()">Add</button>
+
+    <h3>Add Timetable Entry</h3>
+    <input type="text" id="newTimetable" placeholder="e.g. Biology - 20 April">
+    <button onclick="addTimetable()">Add</button>
+
+    <br><br>
+    <button onclick="logout()">Logout</button>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Email: suryacollege@example.com</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Surya Intermediate College</p>
+</footer>
+
+<script>
+  function login() {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    if(user === 'admin' && pass === '1234') {
+      document.getElementById('loginCard').classList.add('hidden');
+      document.getElementById('adminPanel').classList.remove('hidden');
+    } else {
+      alert('Invalid login');
+    }
+  }
+
+  function logout() {
+    document.getElementById('loginCard').classList.remove('hidden');
+    document.getElementById('adminPanel').classList.add('hidden');
+  }
+
+  function addAnnouncement() {
+    const text = document.getElementById('newAnnouncement').value;
+    if(text) {
+      const li = document.createElement('li');
+      li.textContent = text;
+      document.getElementById('announcementList').appendChild(li);
+      document.getElementById('newAnnouncement').value = '';
+    }
+  }
+
+  function addTimetable() {
+    const text = document.getElementById('newTimetable').value;
+    if(text) {
+      const li = document.createElement('li');
+      li.textContent = text;
+      document.getElementById('timetableList').appendChild(li);
+      document.getElementById('newTimetable').value = '';
+    }
+  }
+</script>
+
+</body>
+</html>
